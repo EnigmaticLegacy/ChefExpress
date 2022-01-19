@@ -1,0 +1,30 @@
+{
+    "menu":[
+        {"id":"", "dish":"" ,"desc":"","type":""},
+        {"id":"", "dish":"" ,"desc":"","type":""},
+        {"id":"", "dish":"" ,"desc":"","type":""},
+        {"id":"", "dish":"" ,"desc":"","type":""},
+        {"id":"", "dish":"" ,"desc":"","type":""},
+        {"id":"", "dish":"" ,"desc":"","type":""},
+        {"id":"", "dish":"" ,"desc":"","type":""},
+        {"id":"", "dish":"" ,"desc":"","type":""},
+        {"id":"", "dish":"" ,"desc":"","type":""},
+        {"id":"", "dish":"" ,"desc":"","type":""},
+        {"id":"", "dish":"" ,"desc":"","type":""},
+        {"id":"", "dish":"" ,"desc":"","type":""},
+        {"id":"", "dish":"" ,"desc":"","type":""},
+        {"id":"", "dish":"" ,"desc":"","type":""},
+        {"id":"", "dish":"" ,"desc":"","type":""},
+        {"id":"", "dish":"" ,"desc":"","type":""}
+    ],
+    "cooks":[
+        {"id":"", "name":""},
+        {"id":"", "name":""},
+        {"id":"", "name":""},
+        {"id":"", "name":""},
+        {"id":"", "name":""},
+        {"id":"", "name":""},
+        {"id":"", "name":""},
+        {"id":"", "name":""}
+    ]
+}

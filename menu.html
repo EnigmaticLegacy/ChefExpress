@@ -39,8 +39,8 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
-                            <a class="nav-link active" aria-current="page" href="index.html" target="_self">Home</a>
-                            <a class="nav-link" href="./menu.html">Menu</a>
+                            <a class="nav-link" aria-current="page" href="index.html" target="_self">Home</a>
+                            <a class="nav-link active" href="./menu.html">Menu</a>
                             <a class="nav-link" href="./about.html">About Us</a>
                             <a class="nav-link" href="./catering.html">Catering</a>
                             </div>
@@ -51,73 +51,46 @@
             </div>
             <div class="body">
                 <div class="container mb-4">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        </div>
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <img src="./Assets/Image/Banner/banner1.jpg" class="d-block w-100" alt="chefexpress">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="./Assets/Image/Banner/banner2.jpg" class="d-block w-100" alt="chefexpress">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="./Assets/Image/Banner/banner3.jpg" class="d-block w-100" alt="chefexpress">
-                          </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Next</span>
-                        </button>
+                    <form>
+                        <input type="radio" name="filter" id="all_course" value="all" checked>
+                        <label for="all_course"></label><br>
+                        <input type="radio" name="filter" id="appetizer" value="appetizer">
+                        <label for="appetizer"></label><br>
+                        <input type="radio" name="filter" id="main_course" value="main">
+                        <label for="main_course"></label><br>
+                        <input type="radio" name="filter" id="desserts" value="desserts">
+                        <label for="desserts"></label>
+                    </form>
+                    <div id="menu-list">
+
                     </div>
-                    <div class="lists">
-                        <div class="food">
-                            <h1>Food Menu</h1>
-                            <hr>
-                            <div class="owl-carousel owl-theme" id="food-list">
-                                <div class="item"><h4>1</h4></div>
-                                <div class="item"><h4>2</h4></div>
-                                <div class="item"><h4>3</h4></div>
-                                <div class="item"><h4>4</h4></div>
-                                <div class="item"><h4>5</h4></div>
-                                <div class="item"><h4>6</h4></div>
-                                <div class="item"><h4>7</h4></div>
-                                <div class="item"><h4>8</h4></div>
-                                <div class="item"><h4>9</h4></div>
-                                <div class="item"><h4>10</h4></div>
-                                <div class="item"><h4>11</h4></div>
-                                <div class="item"><h4>12</h4></div>
-                            </div>
-                        </div>
-                        <div class="chef">
-                            <h1>Our Chefs</h1>
-                            <hr>
-                            <div class="owl-carousel owl-theme" id="chef-list">
-                                <div class="item"><h4>1</h4></div>
-                                <div class="item"><h4>2</h4></div>
-                                <div class="item"><h4>3</h4></div>
-                                <div class="item"><h4>4</h4></div>
-                                <div class="item"><h4>5</h4></div>
-                                <div class="item"><h4>6</h4></div>
-                                <div class="item"><h4>7</h4></div>
-                                <div class="item"><h4>8</h4></div>
-                                <div class="item"><h4>9</h4></div>
-                                <div class="item"><h4>10</h4></div>
-                                <div class="item"><h4>11</h4></div>
-                                <div class="item"><h4>12</h4></div>
-                            </div>
-                        </div>
-                    </div>
-                    <script type="text/babel"></script>
                 </div>
             </div>
+            <script>
+                $('input[type="radio"]').click(function(){
+                    if($(this).attr("value") == "all"){
+                        $(".appetizer").show('slow');
+                        $(".main_course").show('slow');
+                        $(".desserts").show('slow');
+                    }
+                    if($(this).attr("value") == "appetizer"){
+                        $(".appetizer").show('slow');
+                        $(".main_course").hide('slow');
+                        $(".desserts").hide('slow');
+                    }
+                    if($(this).attr("value") == "main"){
+                        $(".appetizer").hide('slow');
+                        $(".main_course").show('slow');
+                        $(".desserts").hide('slow');
+                    }
+                    if($(this).attr("value") == "desserts"){
+                        $(".appetizer").hide('slow');
+                        $(".main_course").hide('slow');
+                        $(".desserts").show('slow');
+                    }
+                })
+            </script>
+            <script type="text/babel"></script>
             <footer class="bg-light">
                 <div class="foot-content container">
                     <div class="row pt-2">

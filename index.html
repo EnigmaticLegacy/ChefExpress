@@ -12,9 +12,6 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="./Assets/Static/owlcarousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="./Assets/Static/owlcarousel/assets/owl.theme.default.min.css">
-    <script src="./Assets/Static/owlcarousel/owl.carousel.min.js"></script>
 </head>
 <body >
     <script src="./Assets/Static/javascript/main.js"></script>
@@ -81,41 +78,123 @@
                         <div class="food">
                             <h1>Food Menu</h1>
                             <hr>
-                            <div class="owl-carousel owl-theme" id="food-list">
-                                <div class="item"><h4>1</h4></div>
-                                <div class="item"><h4>2</h4></div>
-                                <div class="item"><h4>3</h4></div>
-                                <div class="item"><h4>4</h4></div>
-                                <div class="item"><h4>5</h4></div>
-                                <div class="item"><h4>6</h4></div>
-                                <div class="item"><h4>7</h4></div>
-                                <div class="item"><h4>8</h4></div>
-                                <div class="item"><h4>9</h4></div>
-                                <div class="item"><h4>10</h4></div>
-                                <div class="item"><h4>11</h4></div>
-                                <div class="item"><h4>12</h4></div>
+                            <div class="" id="food-list">
+
                             </div>
                         </div>
                         <div class="chef">
                             <h1>Our Chefs</h1>
                             <hr>
-                            <div class="owl-carousel owl-theme" id="chef-list">
-                                <div class="item"><h4>1</h4></div>
-                                <div class="item"><h4>2</h4></div>
-                                <div class="item"><h4>3</h4></div>
-                                <div class="item"><h4>4</h4></div>
-                                <div class="item"><h4>5</h4></div>
-                                <div class="item"><h4>6</h4></div>
-                                <div class="item"><h4>7</h4></div>
-                                <div class="item"><h4>8</h4></div>
-                                <div class="item"><h4>9</h4></div>
-                                <div class="item"><h4>10</h4></div>
-                                <div class="item"><h4>11</h4></div>
-                                <div class="item"><h4>12</h4></div>
+                            <div class="" id="chef-list">
+
                             </div>
                         </div>
                     </div>
-                    <script type="text/babel"></script>
+                    <script type="text/babel">
+                        class Dish extends React.Component {
+                            constructor (props) {
+                                super()
+                                this.state = {
+                                imageSrc: `./Assets/Image/Menu/${props.id}.jpg`,
+                                }
+                            }
+                            render () {
+                                return (
+                                <div className="DishCard my-2">
+                                    <img className="Dishimage" src={this.state.imageSrc}/>
+                                    <div className="Dishcaption"><p className="card-title">{ this.props.dish }</p></div>
+                                </div>
+                                )
+                            }
+                            }
+
+                            class TheList extends React.Component {
+                            constructor (props) {
+                                super()
+                                this.state = {
+                                dishesMenu: []
+                                }
+                            }
+
+                            componentDidMount() {
+                                axios.get('https://firebasestorage.googleapis.com/v0/b/chefexpress-c9f43.appspot.com/o/data.json?alt=media&token=9f399506-f33c-4af3-b531-ec7dbab51b26')
+                                .then(res => {
+                                this.setState({
+                                    dishesMenu: res.data.menu
+                                })
+                                })
+                            }
+
+                            render () {
+                                return (
+                                <div className="menu-list d-flex flex-wrap justify-content-between">
+                                    {
+                                    this.state.dishesMenu.map((item) => {
+                                        return (
+                                        <Dish key={item.id} dish={item.dish} id={item.id} desc={item.desc}/>
+                                        )
+                                    })
+                                    }
+                                </div>   
+                                )
+                            }
+                            }
+
+                            ReactDOM.render(<TheList />, document.getElementById('food-list'))
+
+                            class Chef extends React.Component {
+                            constructor (props) {
+                                super()
+                                this.state = {
+                                ChefimageSrc: `./Assets/Image/Chef/${props.id}.jpg`,
+                                }
+
+                            }
+                            render () {
+                                return (
+                                <div className="ChefCard my-2">
+                                    <img className="ChefImage" src={this.state.ChefimageSrc}/>
+                                    <div className="ChefName"><p className="card-title">{ this.props.name }</p></div>
+                                </div>
+                                )
+                            }
+                            }
+
+                            class ChefList extends React.Component {
+                            constructor (props) {
+                                super()
+                                this.state = {
+                                Chefall: []
+                                }
+                            }
+
+                            componentDidMount() {
+                                axios.get('https://firebasestorage.googleapis.com/v0/b/chefexpress-c9f43.appspot.com/o/data.json?alt=media&token=9f399506-f33c-4af3-b531-ec7dbab51b26')
+                                .then(res => {
+                                this.setState({
+                                    Chefall: res.data.cooks
+                                })
+                                })
+                            }
+
+                            render () {
+                                return (
+                                <div className="menu-list d-flex flex-wrap justify-content-between">
+                                    {
+                                    this.state.Chefall.map((chefitem) => {
+                                        return (
+                                        <Chef key={chefitem.id} name={chefitem.name} id={chefitem.id}/>
+                                        )
+                                    })
+                                    }
+                                </div>   
+                                )
+                            }
+                            }
+
+                            ReactDOM.render(<ChefList />, document.getElementById('chef-list'))
+
+                    </script>
                 </div>
             </div>
             <footer class="bg-light">

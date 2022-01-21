@@ -53,18 +53,76 @@
                 <div class="container mb-4">
                     <form>
                         <input type="radio" name="filter" id="all_course" value="all" checked>
-                        <label for="all_course"></label><br>
+                        <label for="all_course">All Course</label>
                         <input type="radio" name="filter" id="appetizer" value="appetizer">
-                        <label for="appetizer"></label><br>
+                        <label for="appetizer">Appetizer</label>
                         <input type="radio" name="filter" id="main_course" value="main">
-                        <label for="main_course"></label><br>
+                        <label for="main_course">Main Course</label>
                         <input type="radio" name="filter" id="desserts" value="desserts">
-                        <label for="desserts"></label>
+                        <label for="desserts">Desserts</label>
                     </form>
                     <div id="menu-list">
 
                     </div>
                 </div>
+                <script type="text/babel">
+                    class Dish extends React.Component {
+                        constructor (props) {
+                            super()
+                            this.state = {
+                            imageSrc: `./Assets/Image/Menu/${props.id}.jpg`,
+                            showDetails: false
+                            }
+
+                        }
+                        render () {
+                            return (
+                            <div className={this.props.type}>
+                                <img className="Dishimage col-md-5" src={this.state.imageSrc}/>
+                                <div className="Dishcapdesc col-md-7">
+                                    <h5 className="card-title">{ this.props.dish }</h5>
+                                    <p className="card-text">{this.props.desc}</p>
+                                </div>
+                            </div>
+                            )
+                        }
+                        }
+
+                        class TheList extends React.Component {
+                        constructor (props) {
+                            super()
+                            this.state = {
+                            dishesMenu: []
+                            }
+                        }
+
+                        componentDidMount() {
+                            axios.get('https://firebasestorage.googleapis.com/v0/b/chefexpress-c9f43.appspot.com/o/data.json?alt=media&token=9f399506-f33c-4af3-b531-ec7dbab51b26')
+                            .then(res => {
+                            this.setState({
+                                dishesMenu: res.data.menu
+                            })
+                            })
+                        }
+
+                        render () {
+                            return (
+                            <div className="menu-list d-flex flex-wrap justify-content-between">
+                                {
+                                this.state.dishesMenu.map((item) => {
+                                    return (
+                                    <Dish key={item.id} dish={item.dish} id={item.id} desc={item.desc} type={item.type}/>
+                                    )
+                                })
+                                }
+                            </div>   
+                            )
+                        }
+                        }
+
+                        ReactDOM.render(<TheList />, document.getElementById('menu-list'))
+
+                </script>
             </div>
             <script>
                 $('input[type="radio"]').click(function(){
@@ -90,7 +148,6 @@
                     }
                 })
             </script>
-            <script type="text/babel"></script>
             <footer class="bg-light">
                 <div class="foot-content container">
                     <div class="row pt-2">

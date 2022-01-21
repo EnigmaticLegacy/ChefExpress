@@ -1,6 +1,6 @@
 html,
 body{
-    background-color: orange !important;
+    background-color: #F97A4B !important;
     height: 100% !important; 
     width: 100% !important;
 }
@@ -191,7 +191,7 @@ h1 {
 }
 
 a.nav-link:hover{
-    color: orange !important;
+    color: #F97A4B !important;
 }
 
 .header{
@@ -200,7 +200,17 @@ a.nav-link:hover{
 
 .active{
     font-weight: bold;
-    color: orange !important;
+    color: #F97A4B !important;
+}
+
+.active:hover{
+    font-weight: normal;
+}
+
+hr{
+    height: 2px !important;
+    color: white !important;
+    opacity: 1 !important;
 }
 
 /* Inner-Content */
@@ -209,16 +219,66 @@ a.nav-link:hover{
     font-weight: bold;
 }
 
-#food-list, #chef-list{
-    background-color: white;
-}
-
 .about-image{
     height: 100%;
     width: 100%;
     max-height: 360px;
     max-width: 570px;
 }
+
+.DishCard,.ChefCard{
+    max-width: 200px;
+    height: 260px;
+    border: 1px solid white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.Dishcaption,.ChefName{
+    height: 100%;
+    max-height: 68px;
+    align-items: center;
+    background-color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.Dishcapdesc h5{
+    font-weight: bold;
+}
+
+.Dishcapdesc,.ChefName{
+    height: 100%;
+    align-items: center;
+    background-color: white;
+    text-align: center;
+
+}
+
+.Dishimage,.ChefImage{
+    width: 200px;
+    height: 200px !important;
+}
+
+@media (min-width: 768px){
+.desserts,.main_course,.appetizer{
+    flex: 0 0 auto;
+    width: 50%;
+}
+}
+.desserts,.main_course,.appetizer{
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    justify-content: space-between;
+}
+
 /* Copyright */
 
 .footer{
@@ -255,5 +315,35 @@ p.copyright{
 }
 
 .ind-footer-link a:hover{
-    color: orange;
+    color: #F97A4B;
+}
+
+/* Overlay */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .overlay > .zoomedDesc {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    max-width: 80%;
+    max-height: 80%;
+    transform: translate(-50%,-50%);
+    overflow: hidden;
+    background-color: white;
+  }
+
+.descDetails{
+    background-color: white;
 }
